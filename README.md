@@ -1,19 +1,18 @@
 # STOKED Check-In
 
-A private, dependency-free web app based on the feeling indicators in the **S.T.O.K.E.D. Awareness Path**. The reflection questions from the source document are intentionally excluded.
+A private Next.js application based on the feeling indicators in the **S.T.O.K.E.D. Awareness Path**. Users can create an account, save assessments, and view their patterns over time.
 
-## Run it
+## Setup
 
-Open `index.html` in a browser. No install or build step is required.
+1. Install dependencies with `npm install`.
+2. Copy `.env.example` to `.env.local` and add the Neon pooled connection string.
+3. Generate a secret with `npx auth secret` and set `BETTER_AUTH_SECRET`.
+4. Run `npm run db:auth` to create Better Auth's user and session tables.
+5. Run `npm run db:app` to create the assessment table.
+6. Start with `npm run dev`.
 
-For a local development server, you can also run:
-
-```powershell
-python -m http.server 8080
-```
-
-Then visit `http://localhost:8080`.
+For Vercel, add `DATABASE_URL`, `BETTER_AUTH_SECRET`, and `BETTER_AUTH_URL` to the project environment. Set `BETTER_AUTH_URL` to the production site URL.
 
 ## Result logic
 
-The primary result is the furthest stage in the path where the user checked at least one feeling. The result also shows counts for all six stages so the user can see their complete pattern. Selections are held in memory only and are cleared when the page is reloaded or the check-in is restarted.
+The primary result is the furthest stage where the user checked at least one feeling. The dashboard preserves counts across all six stages so the user can see their broader pattern.
