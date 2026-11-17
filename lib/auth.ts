@@ -6,7 +6,11 @@ import { pool } from "@/lib/db";
 export const auth = betterAuth({
   database: pool,
   baseURL: process.env.BETTER_AUTH_URL,
-  trustedOrigins: ["https://*.vercel.app"],
+  trustedOrigins: [
+    "https://stokedscale.app",
+    "https://www.stokedscale.app",
+    "https://*.vercel.app",
+  ],
   emailAndPassword: { enabled: true, minPasswordLength: 8 },
   user: { changeEmail: { enabled: true } },
   plugins: [nextCookies()],
